@@ -1,6 +1,6 @@
 //B = höger
 //C = vänster
-
+//Nikitah
 //Sensor in = 4
 
 int MOVE_TIME = 14000;							
