@@ -24,6 +24,9 @@ sub move_forward(int time, int speed_right, int speed_left){
 	Wait(time);
 }
 
+
+//snurrar till den är dist från väggen, snurrar sen åt andra hållet
+//"90" grader 
 sub find_wall(int wall_dist, int right_speed, int left_speed){
 	SetSensorLowspeed(IN_4);
 	while(true){
@@ -38,6 +41,7 @@ sub find_wall(int wall_dist, int right_speed, int left_speed){
 	}
 }
 
+//åker framåt till den är dist från väggen. 
 sub stop_at_wall(int wall_dist, int timee, int speed_right, int speed_left){
 	SetSensorLowspeed(IN_4);
 	while(true){
@@ -52,6 +56,7 @@ sub stop_at_wall(int wall_dist, int timee, int speed_right, int speed_left){
 	}
 }
 
+//snurrar på motor i OUT_A för att boken ska ramla ned
 sub drop_item(){
 	OnFwd(OUT_A, 30);
 	Wait(1000);
