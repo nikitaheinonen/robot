@@ -3,12 +3,12 @@
 
 //Sensor in = 4
 
-int MOVE_TIME = 14000;							
-int SPEED_RIGHT_WHEEL_SPIN = 30;
-int SPEED_LEFT_WHEEL_SPIN = 25;
+int MOVE_TIME = 12500;							
+int SPEED_RIGHT_WHEEL_SPIN = 45;
+int SPEED_LEFT_WHEEL_SPIN = 30;
 int WALL_DIST = 65;	
-int ONE_EIGHTY_DEGREE_SPIN = 2500;
-int NINETY_DEGREE_SPIN = 1100;						
+int ONE_EIGHTY_DEGREE_SPIN = 2200;
+int NINETY_DEGREE_SPIN = 1300;						
 
 
 //metod som får roboten att snurra, hjulhastighet som parametrar
@@ -60,19 +60,21 @@ sub stop_at_wall(int wall_dist, int timee, int speed_right, int speed_left){
 
 //snurrar på motor i OUT_A för att boken ska ramla ned
 sub drop_item(){
-	OnFwd(OUT_A, 30);
+	OnFwd(OUT_A, -40);
 	Wait(1000);
 }
 
 //rikta roboten mot väggen, vänd "90" grader åt ett håll och åk framåt i 2.5m 
 //som är 14s
 task main(){
-	Wait(2000);
+	Wait(4000);
 	find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
-	move_spin(ONE_EIGHTY_DEGREE_SPIN, -30, -25);
-	stop_at_wall(WALL_DIST, 0, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
-	move_spin(NINETY_DEGREE_SPIN, -30, -25);
-	move_forward(MOVE_TIME, 70, 55);
+	move_spin(ONE_EIGHTY_DEGREE_SPIN, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
+	stop_at_wall(WALL_DIST, 0, 82, 65);
+	Off(OUT_BC);
+	move_spin(NINETY_DEGREE_SPIN, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
+	Off(OUT_BC);
+	move_forward(MOVE_TIME, 82, 65);
 	Off(OUT_BC);
 	drop_item();
 	Off(OUT_A);
