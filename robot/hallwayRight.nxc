@@ -70,11 +70,11 @@ task main(){
 	Wait(4000);
 	find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
 	move_spin(ONE_EIGHTY_DEGREE_SPIN, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
-	stop_at_wall(WALL_DIST, 0, 80, 65);
+	stop_at_wall(WALL_DIST, 0, 81, 65);
 	Off(OUT_BC);
 	move_spin(NINETY_DEGREE_SPIN, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
 	Off(OUT_BC);
-	move_forward(MOVE_TIME, 80, 65);
+	move_forward(MOVE_TIME, 81, 65);
 	Off(OUT_BC);
 	drop_item();
 	Off(OUT_A);
