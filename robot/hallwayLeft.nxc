@@ -1,0 +1,87 @@
+//B = höger
+//C = vänster
+
+//Sensor in = 4
+
+int MOVE_TIME = 12500;							
+int SPEED_RIGHT_WHEEL_SPIN = -45;
+int SPEED_LEFT_WHEEL_SPIN = -30;
+int WALL_DIST = 65;	
+int ONE_EIGHTY_DEGREE_SPIN = 2200;
+int NINETY_DEGREE_SPIN = 1300;						
+
+
+//metod som får roboten att snurra, hjulhastighet som parametrar
+sub move_spin(int time, int speed_right, int speed_left){
+	OnFwd(OUT_B, speed_right);
+	OnRev(OUT_C, speed_left);
+	Wait(time);
+}
+
+//metod som får roboten att åka framåt en vissa tid, hjulhastighet samt tid den ska åka
+//som parameter
+sub move_forward(int time, int speed_right, int speed_left){
+	OnFwd(OUT_B, speed_right);
+	OnFwd(OUT_C, speed_left);
+	Wait(time);
+}
+
+
+//snurrar till den är dist från väggen, snurrar sen åt andra hållet
+//"90" grader 
+sub find_wall(int wall_dist, int right_speed, int left_speed){
+	SetSensorLowspeed(IN_4);
+	while(true){
+		float dist = SensorUS(IN_4);
+		if(dist > wall_dist){
+			move_spin(0, right_speed, left_speed);
+		}
+		else{
+			Off(OUT_BC);
+			break;
+		}
+	}
+}
+
+//åker framåt till den är dist från väggen. 
+sub stop_at_wall(int wall_dist, int timee, int speed_right, int speed_left){
+	SetSensorLowspeed(IN_4);
+	while(true){
+		float dist = SensorUS(IN_4);
+		if(dist > wall_dist){
+			move_forward(timee, speed_right, speed_left);
+		}
+		else{
+			Off(OUT_BC);
+			break;
+		}
+	}
+}
+
+//snurrar på motor i OUT_A för att boken ska ramla ned
+sub drop_item(){
+	OnFwd(OUT_A, -40);
+	Wait(1000);
+}
+
+//rikta roboten mot väggen, vänd "90" grader åt ett håll och åk framåt i 2.5m 
+//som är 14s
+task main(){
+	Wait(4000);
+	find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
+	move_spin(ONE_EIGHTY_DEGREE_SPIN, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
+	stop_at_wall(WALL_DIST, 0, 80, 65);
+	Off(OUT_BC);
+	move_spin(NINETY_DEGREE_SPIN, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
+	Off(OUT_BC);
+	move_forward(MOVE_TIME, 80, 65);
+	Off(OUT_BC);
+	drop_item();
+	Off(OUT_A);
+	
+}
+
+
+
+
+
