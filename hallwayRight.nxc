@@ -6,7 +6,9 @@
 int MOVE_TIME = 14000;							
 int SPEED_RIGHT_WHEEL_SPIN = 30;
 int SPEED_LEFT_WHEEL_SPIN = 25;
-int WALL_DIST = 65;							
+int WALL_DIST = 65;	
+int 180_DEGREE_SPIN = 2500;
+int 90_DEGREE_SPIN = 1100;						
 
 
 //metod som får roboten att snurra, hjulhastighet som parametrar
@@ -67,9 +69,9 @@ sub drop_item(){
 task main(){
 	Wait(2000);
 	find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
-	move_spin(2500, -30, -25);
+	move_spin(180_DEGREE_SPIN, -30, -25);
 	stop_at_wall(WALL_DIST, 0, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
-	move_spin(1100, -30, -25);
+	move_spin(90_DEGREE_SPIN, -30, -25);
 	move_forward(MOVE_TIME, 70, 55);
 	Off(OUT_BC);
 	drop_item();
