@@ -54,7 +54,7 @@ task main(){
 	find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
 	move_spin(-45, -30);
 	Wait(900);
-	move_forward(MOVE_TIME, 80, 65);
+	move_forward(MOVE_TIME, 81, 65);
 	Off(OUT_BC);
 	drop_item();
 	Off(OUT_A);
