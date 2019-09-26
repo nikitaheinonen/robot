@@ -42,7 +42,7 @@ sub find_wall(int wall_dist, int right_speed, int left_speed){
 //snurrar på motor i OUT_A för att boken ska ramla ned
 sub drop_item(){
 	OnFwd(OUT_A, -40);
-	Wait(1000);
+	Wait(2000);
 }
 
 //rikta roboten mot väggen, vänd "90" grader åt ett håll och åk framåt i 2.5m 

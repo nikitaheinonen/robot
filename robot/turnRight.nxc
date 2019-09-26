@@ -55,12 +55,13 @@ task main(){
 	float distt = SensorUS(IN_4);
 	if(distt <= WALL_DIST){
 		move_spin(-SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
-		Wait(1300);
+		Wait(1100);
 	}
 	else{
 		find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
+		Off(OUT_BC);
 		move_spin(-SPEED_RIGHT_WHEEL_SPIN, -SPEED_RIGHT_WHEEL_SPIN);
-		Wait(900);
+		Wait(550);
 	}
 	move_forward(MOVE_TIME, 81, 65);
 	Off(OUT_BC);

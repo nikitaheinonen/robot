@@ -60,7 +60,7 @@ sub stop_at_wall(int wall_dist, int timee, int speed_right, int speed_left){
 
 //snurrar på motor i OUT_A för att boken ska ramla ned
 sub drop_item(){
-	OnFwd(OUT_A, -40);
+	OnFwd(OUT_A, -60);
 	Wait(1000);
 }
 
@@ -71,7 +71,7 @@ task main(){
 	SetSensorLowspeed(IN_4);
 	float distt = SensorUS(IN_4);
 	if(distt <= WALL_DIST){
-		move_spin(1700, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
+		move_spin(1850, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
 	}
 	else{
 		find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
