@@ -67,14 +67,23 @@ sub drop_item(){
 //rikta roboten mot väggen, vänd "90" grader åt ett håll och åk framåt i 2.5m 
 //som är 14s
 task main(){
-	Wait(4000);
-	find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
-	move_spin(ONE_EIGHTY_DEGREE_SPIN, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
+	Wait(6000);
+	SetSensorLowspeed(IN_4);
+	float distt = SensorUS(IN_4);
+	if(distt <= WALL_DIST){
+		move_spin(1700, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
+	}
+	else{
+		find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
+		move_spin(ONE_EIGHTY_DEGREE_SPIN, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_RIGHT_WHEEL_SPIN);
+	}
 	stop_at_wall(WALL_DIST, 0, 81, 65);
 	Off(OUT_BC);
 	move_spin(NINETY_DEGREE_SPIN, -SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
 	Off(OUT_BC);
 	move_forward(MOVE_TIME, 81, 65);
+	Off(OUT_BC);
+	move_spin(1300, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
 	Off(OUT_BC);
 	drop_item();
 	Off(OUT_A);
