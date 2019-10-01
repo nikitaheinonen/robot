@@ -5,71 +5,68 @@
 
 //Sensor in = 4
 
-int MOVE_TIME = 12500;							
-int SPEED_RIGHT_WHEEL_SPIN = 45;
-int SPEED_LEFT_WHEEL_SPIN = 30;
-int WALL_DIST = 65;							
+int MOVE_TIME = 11000;							
+int speed = 30;
+int WALL_DIST = 65;	
+int turn_right = 180;	
+int turn_wall = 5;	
 
 
-//metod som får roboten att snurra, hjulhastighet som parametrar
-sub move_spin(int speed_right, int speed_left){
-	OnFwd(OUT_B, speed_right);
-	OnRev(OUT_C, speed_left);
+
+//metod som får roboten att snurra, hjulhastighet,grader som parametrar
+sub move_spin(int speed1, int speed2, int degree){
+	RotateMotor(OUT_B, speed1, -degree);
+	RotateMotor(OUT_C, speed2, degree);
 }
+
+
 
 //metod som får roboten att åka framåt en vissa tid, hjulhastighet samt tid den ska åka
 //som parameter
-sub move_forward(int time, int speed_right, int speed_left){
-	OnFwd(OUT_B, speed_right);
-	OnFwd(OUT_C, speed_left);
-	Wait(time);
+sub move_forward(int timee, int speed3){
+	OnFwdReg(OUT_BC, speed3, OUT_REGMODE_SPEED);
+	Wait(timee);
 }
 
 //rmetod som gör att roboten snurrar till den "hittar" väggen, dvs är 
 //en viss distans ifrån den.
-sub find_wall(int wall_dist, int right_speed, int left_speed){
+sub find_wall(){
 	SetSensorLowspeed(IN_4);
+	float old = (SensorUS(IN_4));
 	while(true){
+		move_spin(speed, speed, turn_wall);
+		Wait(300);
 		float dist = SensorUS(IN_4);
-		if(dist > wall_dist){
-			move_spin(right_speed, left_speed);
-		}
-		else{
-			Off(OUT_BC);
+		if(old < dist){
+			Float(OUT_BC);
 			break;
 		}
+		old = dist;
 	}
 }
 
 //snurrar på motor i OUT_A för att boken ska ramla ned
-sub drop_item(){
-	OnFwd(OUT_A, -40);
-	Wait(1000);
+sub drop_item(int speed4){
+	RotateMotor(OUT_A, speed4, -360);
 }
 
 //rikta roboten mot väggen, vänd "90" grader åt ett håll och åk framåt i 2.5m 
 //som är 14s
 task main(){
 	Wait(6000);
-	SetSensorLowspeed(IN_4);
-	float distt = SensorUS(IN_4);
-	if(distt <= WALL_DIST){
-		move_spin(-SPEED_RIGHT_WHEEL_SPIN, -SPEED_LEFT_WHEEL_SPIN);
-		Wait(1100);
-	}
-	else{
-		find_wall(WALL_DIST, SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
-		Off(OUT_BC);
-		move_spin(-SPEED_RIGHT_WHEEL_SPIN, -SPEED_RIGHT_WHEEL_SPIN);
-		Wait(550);
-	}
-	move_forward(MOVE_TIME, 81, 65);
+	find_wall();
+	move_spin(50, 30, turn_right);
 	Off(OUT_BC);
-	move_spin(SPEED_RIGHT_WHEEL_SPIN, SPEED_LEFT_WHEEL_SPIN);
-	Wait(1300);
-	Off(OUT_BC);
-	drop_item();
-	Off(OUT_A);
-
-	
+	move_forward(MOVE_TIME, 50);
+	Float(OUT_BC);
+	move_spin(50, 30, -turn_right);
+	Float(OUT_BC);
+	drop_item(30);
+	Off(OUT_ABC);
 }
+
+
+
+
+
+
