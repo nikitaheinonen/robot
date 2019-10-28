@@ -1,0 +1,604 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20884,        596]
+NotebookOptionsPosition[     17924,        533]
+NotebookOutlinePosition[     18316,        550]
+CellTagsIndexPosition[     18273,        547]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Inl\[ADoubleDot]mningsuppgift 3", "Title",
+ CellChangeTimes->{{3.779702822766705*^9, 
+  3.7797028259816027`*^9}},ExpressionUUID->"64d2c840-9a00-4a93-ab79-\
+caf7e7c682ef"],
+
+Cell["\<\
+IX1307 Probleml\[ODoubleDot]sning i Matematik, Inl\[ADoubleDot]mningsuppgift \
+3b, HT2019
+Nikita Heinonen, nikitah@kth.se\
+\>", "Text",
+ CellChangeTimes->{{3.779791964820484*^9, 
+  3.7797920055434113`*^9}},ExpressionUUID->"b563ae6d-1de0-4e64-ba37-\
+03967e8488fc"],
+
+Cell[CellGroupData[{
+
+Cell["Trafikfl\[ODoubleDot]de", "Section",
+ CellChangeTimes->{{3.779702847870083*^9, 
+  3.779702866630422*^9}},ExpressionUUID->"e8d1240f-7d5a-451d-aa85-\
+440ec8065da7"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+\[CapitalADoubleDot]r v\[ARing]rt antagande om att fl\[ODoubleDot]det bevaras \
+giltigt? N\[ADoubleDot]r kan antagandet vara felaktigt? Vilka andra f\
+\[ODoubleDot]renklingar har vi antagit?\
+\>", "Subsection",
+ CellChangeTimes->{{3.7797915393011703`*^9, 3.779791558739891*^9}, {
+  3.779791812367482*^9, 
+  3.779791812685347*^9}},ExpressionUUID->"387293ce-7992-4142-88c2-\
+7bd678955b3d"],
+
+Cell["\<\
+Det \[ADoubleDot]r giltigt d\[ARing] vi bygger modellen utifr\[ARing]n det. \
+Om man dock ska applicera modellen i verkligheten blir det problematiskt d\
+\[ARing] bilar kan f\[ODoubleDot]rsvinna fr\[ARing]n fl\[ODoubleDot]det genom \
+att t.ex. k\[ODoubleDot]ra in p\[ARing] en parkering l\[ADoubleDot]ngs v\
+\[ADoubleDot]gen och stanna d\[ADoubleDot]r. En bil skulle ocks\[ARing] kunna \
+k\[ODoubleDot]ra in i en korsning f\[ODoubleDot]r att sedan g\[ODoubleDot]ra \
+en u-sv\[ADoubleDot]ng. Vi har antagit att varje v\[ADoubleDot]g \
+\[ADoubleDot]r enkelriktad. \
+\>", "Text",
+ CellChangeTimes->{{3.7797915690913973`*^9, 3.77979168736864*^9}, {
+  3.779791759551393*^9, 
+  3.7797917844850483`*^9}},ExpressionUUID->"732d01cf-7c60-46b9-980a-\
+cf737c122acd"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Ekvationssystem f\[ODoubleDot]r trafikfl\[ODoubleDot]de", "Subsection",
+ CellChangeTimes->{{3.77970294312061*^9, 
+  3.779702951560354*^9}},ExpressionUUID->"de89dd55-66cf-4fef-b592-\
+45e939cfbf7e"],
+
+Cell[TextData[{
+ "Jag st\[ADoubleDot]ller upp ekvationssystemet med de sex olika variablerna ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "1"], ",", 
+    SubscriptBox["x", "2"], ",", 
+    SubscriptBox["x", "3"], ",", 
+    SubscriptBox["x", "4"], ",", 
+    SubscriptBox["x", "5"], ",", 
+    SubscriptBox["x", "6"]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "a149e1a2-c5a9-492d-b3ad-b46f327ebf51"],
+ ".\n",
+ Cell[BoxData[
+  RowBox[{"{", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "1"], "+", "80"}], "\[AlignmentMarker]", "=", 
+       RowBox[{
+        SubscriptBox["x", "2"], "+", "30"}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "3"], "+", "20"}], "\[AlignmentMarker]", "=", 
+       RowBox[{
+        SubscriptBox["x", "1"], "+", "60"}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "6"], "+", "100"}], "\[AlignmentMarker]", "=", 
+       RowBox[{
+        SubscriptBox["x", "5"], "+", "40"}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "4"], "+", "40"}], "\[AlignmentMarker]", "=", 
+       RowBox[{
+        SubscriptBox["x", "6"], "+", "90"}]}]}
+    }]}]],
+  SpanMaxSize->Infinity,ExpressionUUID->
+  "05d103da-1f7b-435a-9948-78d8f38fc52e"],
+ StyleBox["\nVi kan f\[ODoubleDot]renkla system n\[ARing]got.\n",
+  SpanMaxSize->Infinity],
+ Cell[BoxData[
+  RowBox[{"{", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "1"], "-", 
+        SubscriptBox["x", "2"]}], "=", 
+       RowBox[{"-", "50"}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "1"], "-", 
+        SubscriptBox["x", "3"]}], "=", 
+       RowBox[{"-", "40"}]}]},
+     {
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "5"], "-", 
+        SubscriptBox["x", "6"]}], "=", "60"}]},
+     {
+      RowBox[{
+       RowBox[{
+        SubscriptBox["x", "6"], "-", 
+        SubscriptBox["x", "4"]}], "=", 
+       RowBox[{"-", "50"}]}]}
+    }]}]],
+  SpanMaxSize->Infinity,ExpressionUUID->"6b1e2e49-0a08-47c3-b4f5-63d14402e1e6"]
+}], "Text",
+ CellChangeTimes->{{3.779703050540914*^9, 3.779703147518198*^9}, {
+  3.7797032236412497`*^9, 3.779703294440824*^9}, {3.779703677161804*^9, 
+  3.779703678785297*^9}, {3.779703734482005*^9, 3.7797040601706877`*^9}, {
+  3.7797043428433743`*^9, 3.779704358833873*^9}, {3.779704499852997*^9, 
+  3.77970458771106*^9}},
+ TextAlignment->
+  AlignmentMarker,ExpressionUUID->"f5cd60ea-ed9f-4132-a7f0-a48804ba5df7"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.779703410829042*^9, 3.779703468484456*^9}, {
+  3.7797034999650717`*^9, 3.779703531886032*^9}, {3.7797035681967297`*^9, 
+  3.7797036035000563`*^9}},
+ CellLabel->"",ExpressionUUID->"378eec7c-440b-44d6-b549-25aabfb8f958"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Best\[ADoubleDot]m trafikfl\[ODoubleDot]det f\[ODoubleDot]r v\
+\[ADoubleDot]gsystemet", "Subsection",
+ CellChangeTimes->{{3.779704910198148*^9, 
+  3.77970492059783*^9}},ExpressionUUID->"d2b1c596-b7ee-453d-80ff-\
+dcdf4f0e6d60"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Reduce", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x1", "-", "x2"}], "==", 
+      RowBox[{"-", "50"}]}], ",", 
+     RowBox[{
+      RowBox[{"x1", "-", "x3"}], "\[Equal]", 
+      RowBox[{"-", "40"}]}], ",", 
+     RowBox[{
+      RowBox[{"x5", "-", "x6"}], "\[Equal]", "60"}], ",", 
+     RowBox[{
+      RowBox[{"x6", "-", "x4"}], "\[Equal]", 
+      RowBox[{"-", "50"}]}], ",", 
+     RowBox[{
+      RowBox[{"x3", "+", "x5"}], "==", 
+      RowBox[{"x2", "+", "x4"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x1", ",", "x2", ",", "x3", ",", "x4", ",", "x5", ",", "x6"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.779705007689286*^9, 3.779705070978179*^9}, 
+   3.7797051854130898`*^9, {3.779705252630497*^9, 3.779705309415307*^9}, {
+   3.779705565786831*^9, 3.7797055751205187`*^9}, {3.7797774896481743`*^9, 
+   3.779777490144261*^9}, {3.779777886193502*^9, 3.779777920862239*^9}, {
+   3.779790443035287*^9, 3.7797904437436533`*^9}},
+ CellLabel->"In[42]:=",ExpressionUUID->"0aa42b6a-7238-43b0-a84f-f9c8cc1d2e41"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"x2", "\[Equal]", 
+   RowBox[{"50", "+", "x1"}]}], "&&", 
+  RowBox[{"x3", "\[Equal]", 
+   RowBox[{"40", "+", "x1"}]}], "&&", 
+  RowBox[{"x5", "\[Equal]", 
+   RowBox[{"10", "+", "x4"}]}], "&&", 
+  RowBox[{"x6", "\[Equal]", 
+   RowBox[{
+    RowBox[{"-", "50"}], "+", "x4"}]}]}]], "Output",
+ CellChangeTimes->{
+  3.7797053111348457`*^9, {3.7797055688413153`*^9, 3.779705576083477*^9}, 
+   3.7797774915886307`*^9, {3.779777910273272*^9, 3.779777921639852*^9}, 
+   3.77978859583637*^9, 3.7797904442873697`*^9},
+ CellLabel->"Out[42]=",ExpressionUUID->"e945ae08-47df-4606-be1d-ef6cff443b8a"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Antag att trafiken m\[ARing]ste flyta i de riktningar som anges i figuren, \
+vad \[ADoubleDot]r d\[ARing] de minsta fl\[ODoubleDot]dena f\[ODoubleDot]r ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "2"], ",", " ", 
+    SubscriptBox["x", "3"], ",", " ", 
+    SubscriptBox["x", "4"]}], TraditionalForm]],ExpressionUUID->
+  "4a87f58c-f7d5-4e2c-913a-4d6c62bf679c"],
+ " och ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "5"], TraditionalForm]],ExpressionUUID->
+  "0abbeb1e-f707-49f8-a303-6350a909df0f"],
+ "?"
+}], "Subsection",
+ CellChangeTimes->{
+  3.779790453908989*^9},ExpressionUUID->"788a212f-0aaf-4cdb-a44c-\
+7928f0009ef8"],
+
+Cell[TextData[{
+ "Om trafiken ska flyta i r\[ADoubleDot]tt riktning m\[ARing]ste alla fl\
+\[ODoubleDot]dena vara positiva. Detta ger f\[ODoubleDot]ljande:\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "1"], "=", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["x", "2"], "-", "50"}], ">", "0"}]}], ",", 
+    RowBox[{
+     SubscriptBox["x", "1"], "=", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["x", "3"], "-", "40"}], ">", "0"}]}], ",", 
+    RowBox[{
+     SubscriptBox["x", "5"], "=", 
+     RowBox[{
+      RowBox[{"10", "+", 
+       SubscriptBox["x", "4"]}], ">", "0"}]}], ",", 
+    RowBox[{
+     SubscriptBox["x", "6"], "=", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["x", "4"], "-", "50"}], ">", "0"}]}]}], TraditionalForm]],
+  
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "b42a9ec3-ffdc-4497-8739-672309773f58"],
+ ".\nMinsta v\[ADoubleDot]rdet f\[ODoubleDot]r ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "2"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "e85affe9-10ac-4137-8b96-3e19c4431f9b"],
+ " blir d\[ARing] ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "2"], "=", "51"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "24a118c0-8155-4002-8b27-3e3929c3bb67"],
+ ".\nMinsta v\[ADoubleDot]rdet f\[ODoubleDot]r ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "3"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "3de7299b-1d58-491f-a0fd-441581635f2b"],
+ " blir d\[ARing] ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "3"], "=", "41"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "836d5d1d-0bc8-4a88-88db-98831f18a69a"],
+ ".\nMinsta v\[ADoubleDot]rdet f\[ODoubleDot]r ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "4"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "1a173058-5c23-432f-9c14-e66a9c729390"],
+ " blir d\[ARing] ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "4"], "=", "51"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "a50874b7-c48b-43bb-b45f-ab0de553d957"],
+ ".\nMinsta v\[ADoubleDot]rdet f\[ODoubleDot]r ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "5"], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "363cdc72-74f7-42ef-b166-4667aaa578c4"],
+ " blir d\[ARing] ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "5"], "=", "61"}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "119e3b9a-a3f7-4a68-a516-32fbb07eead7"],
+ ".\nVi utg\[ARing]r fr\[ARing]n heltal d\[ARing] siffrorna anger fordon per \
+minut och vi antar att vi r\[ADoubleDot]knar antal hela bilar. "
+}], "Text",
+ InitializationCell->True,
+ CellChangeTimes->{{3.77979059129145*^9, 3.779790609979342*^9}, {
+  3.779790778072847*^9, 3.779790847395797*^9}, {3.7797908900890636`*^9, 
+  3.779791184173953*^9}, {3.779791258938075*^9, 3.7797912887353973`*^9}, {
+  3.7797913210749683`*^9, 
+  3.7797914115024967`*^9}},ExpressionUUID->"310334e4-4d2e-442c-9575-\
+1a78f503d5fe"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7797886898794117`*^9, 
+  3.779788741155918*^9}},ExpressionUUID->"a5df8cef-2ee2-482e-8765-\
+7c7e65418746"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Kaniner", "Section",
+ CellChangeTimes->{{3.779706663910656*^9, 
+  3.7797066649343033`*^9}},ExpressionUUID->"51c11c49-5061-4a10-89bf-\
+e061b776f307"],
+
+Cell[CellGroupData[{
+
+Cell["Ber\[ADoubleDot]kna talf\[ODoubleDot]ljden och rita en graf \
+\[ODoubleDot]ver den", "Subsection",
+ CellChangeTimes->{{3.779706675998361*^9, 
+  3.779706683982437*^9}},ExpressionUUID->"268b2d0e-86c6-4db6-8b17-\
+d259adedec80"],
+
+Cell[TextData[{
+ "Vi har ekvationen ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["p", 
+     RowBox[{"n", "+", "2"}]], "=", 
+    RowBox[{
+     SubscriptBox["p", 
+      RowBox[{"n", "+", "1"}]], "+", 
+     SubscriptBox["p", "n"]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "37ffcb59-66a1-4b01-ad57-7e4f8df650e4"],
+ ".\nInitialv\[ADoubleDot]rdena \[ADoubleDot]r, enligt uppgiften, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["p", "1"], "=", "1"}], ",", 
+    RowBox[{
+     SubscriptBox["p", "2"], "=", "1"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "7f74610d-3045-4788-9849-c3b9bfd0fb17"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.7797067553366957`*^9, 
+  3.779706821673978*^9}},ExpressionUUID->"9575c2fc-8e93-480c-b3a1-\
+373f6006efcb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RSolve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"p", "[", 
+       RowBox[{"n", "+", "2"}], "]"}], "\[Equal]", 
+      RowBox[{
+       RowBox[{"p", "[", 
+        RowBox[{"n", "+", "1"}], "]"}], "+", 
+       RowBox[{"p", "[", "n", "]"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"p", "[", "1", "]"}], "\[Equal]", 
+      RowBox[{"p", "[", "2", "]"}], "\[Equal]", "1"}]}], "}"}], ",", 
+   RowBox[{"p", "[", "n", "]"}], ",", "n"}], "]"}]], "Input",
+ CellChangeTimes->{{3.779707369936961*^9, 3.779707375942815*^9}, {
+  3.779707414063713*^9, 3.779707588483939*^9}, {3.779707768648093*^9, 
+  3.77970786270627*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"5a43b793-f90e-4711-ae0e-f48fb1d5e8f4"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"p", "[", "n", "]"}], "\[Rule]", 
+    RowBox[{"Fibonacci", "[", "n", "]"}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.779707795502262*^9, 3.779707863377637*^9}, 
+   3.7797082623836927`*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"8dbd9013-380f-4c11-9051-f12e7851696d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Fibonacci", "[", "n", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "24"}], "}"}]}], "]"}], ",", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Kaninbefolkning efter 2 \[ARing]r\>\""}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<M\[ARing]nader\>\"", ",", "\"\<Kaniner\>\""}], "}"}]}], ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.779708402391962*^9, 3.779708473657462*^9}, {
+  3.779708512324678*^9, 3.77970851238523*^9}, {3.779708646160359*^9, 
+  3.779708755206992*^9}, {3.7797919397021437`*^9, 3.7797919437081347`*^9}},
+ CellLabel->"In[43]:=",ExpressionUUID->"1607d279-7b50-449a-a6bd-2aee6356c13e"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{{}, {}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      0.012833333333333334`], AbsoluteThickness[1.6], LineBox[CompressedData["
+
+1:eJxTTMoPSmViYGAQA2IQDQEf7FFpBgdUPocDqriAA6q4CBotAaUVoLQMlNZC
+EzeF0kpQ2hFKq0DoBm8oXw1CO4RB+RpQOgnVXIVcKF8HQk8oh/L1ILRAM5Rv
+AKFv9EH5hhD6ywwo3whCGyyB8o0hdOgGKN8EQufuQvVH4lGHR3/F79U/hPAd
+mi44AAA9FCQx
+       "]]}}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.012833333333333334`],
+      AbsoluteThickness[1.6]}, {
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      0.012833333333333334`], AbsoluteThickness[1.6]}, {}}, {
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+      0.012833333333333334`], AbsoluteThickness[1.6]}, {}}}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox["\"M\[ARing]nader\"", TraditionalForm], 
+    FormBox["\"Kaniner\"", TraditionalForm]},
+  AxesOrigin->{0., 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  Method->{
+   "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox["\"Kaninbefolkning efter 2 \[ARing]r\"", TraditionalForm],
+  PlotRange->{{0., 24.}, {0, 16905.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.7797084439352207`*^9, 3.779708474338751*^9}, 
+   3.779708512954317*^9, {3.779708713656662*^9, 3.779708755741005*^9}, 
+   3.779791944447547*^9},
+ CellLabel->"Out[43]=",ExpressionUUID->"121d5060-e93f-4809-9961-6a2341c998e6"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Unders\[ODoubleDot]k talf\[ODoubleDot]ljden och diskutera \
+tillv\[ADoubleDot]xtakten. Vilka begr\[ADoubleDot]nsningar har modellen? Hur \
+kan man f\[ODoubleDot]rb\[ADoubleDot]ttra modellen?\
+\>", "Subsection",
+ CellChangeTimes->{{3.779791878563665*^9, 
+  3.77979190296266*^9}},ExpressionUUID->"6555f163-4d90-4c72-bcfa-\
+5423c5df8897"],
+
+Cell["\<\
+Vi ser att ekvationen blir fibonaccis talf\[ODoubleDot]ljd. \
+Tillv\[ADoubleDot]xttakten \[ADoubleDot]r enorm efter bara n\[ARing]gra f\
+\[ARing] m\[ARing]nader. Modellen \[ADoubleDot]r dock begr\[ADoubleDot]nsad p\
+\[ARing] det s\[ADoubleDot]ttet att den inte tar hansyn till kaniner som d\
+\[ODoubleDot]r av olika orsaker utan f\[ODoubleDot]ruts\[ADoubleDot]tter en \
+att alla kaniner som f\[ODoubleDot]ds ocks\[ARing] f\[ODoubleDot]r\
+\[ODoubleDot]kar sig lika mycket.\
+\>", "Text",
+ CellChangeTimes->{{3.779708887538018*^9, 
+  3.779709021757189*^9}},ExpressionUUID->"9f554c83-71c1-4c6d-8a7a-\
+ccbcd2d817bd"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7797065308635197`*^9, 
+  3.7797065675161133`*^9}},ExpressionUUID->"430cf0a0-7504-4bf9-9b1f-\
+4d27f4b8d658"]
+}, Closed]]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{585, 665},
+WindowMargins->{{Automatic, -20}, {Automatic, 13}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 176, 3, 98, "Title",ExpressionUUID->"64d2c840-9a00-4a93-ab79-caf7e7c682ef"],
+Cell[759, 27, 273, 7, 58, "Text",ExpressionUUID->"b563ae6d-1de0-4e64-ba37-03967e8488fc"],
+Cell[CellGroupData[{
+Cell[1057, 38, 168, 3, 67, "Section",ExpressionUUID->"e8d1240f-7d5a-451d-aa85-440ec8065da7"],
+Cell[CellGroupData[{
+Cell[1250, 45, 397, 8, 108, "Subsection",ExpressionUUID->"387293ce-7992-4142-88c2-7bd678955b3d"],
+Cell[1650, 55, 764, 13, 127, "Text",ExpressionUUID->"732d01cf-7c60-46b9-980a-cf737c122acd"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2451, 73, 202, 3, 38, "Subsection",ExpressionUUID->"de89dd55-66cf-4fef-b592-45e939cfbf7e"],
+Cell[2656, 78, 2490, 79, 235, "Text",ExpressionUUID->"f5cd60ea-ed9f-4132-a7f0-a48804ba5df7"],
+Cell[5149, 159, 267, 4, 30, "Input",ExpressionUUID->"378eec7c-440b-44d6-b549-25aabfb8f958"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5453, 168, 232, 4, 38, "Subsection",ExpressionUUID->"d2b1c596-b7ee-453d-80ff-dcdf4f0e6d60"],
+Cell[CellGroupData[{
+Cell[5710, 176, 1079, 27, 52, "Input",ExpressionUUID->"0aa42b6a-7238-43b0-a84f-f9c8cc1d2e41"],
+Cell[6792, 205, 618, 15, 34, "Output",ExpressionUUID->"e945ae08-47df-4606-be1d-ef6cff443b8a"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7459, 226, 662, 19, 65, "Subsection",ExpressionUUID->"788a212f-0aaf-4cdb-a44c-7928f0009ef8"],
+Cell[8124, 247, 3079, 90, 219, "Text",ExpressionUUID->"310334e4-4d2e-442c-9575-1a78f503d5fe",
+ InitializationCell->True],
+Cell[11206, 339, 154, 3, 30, "Input",ExpressionUUID->"a5df8cef-2ee2-482e-8765-7c7e65418746"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[11409, 348, 154, 3, 53, "Section",ExpressionUUID->"51c11c49-5061-4a10-89bf-e061b776f307"],
+Cell[CellGroupData[{
+Cell[11588, 355, 230, 4, 54, "Subsection",ExpressionUUID->"268b2d0e-86c6-4db6-8b17-d259adedec80"],
+Cell[11821, 361, 834, 27, 58, "Text",ExpressionUUID->"9575c2fc-8e93-480c-b3a1-373f6006efcb"],
+Cell[CellGroupData[{
+Cell[12680, 392, 741, 19, 52, "Input",ExpressionUUID->"5a43b793-f90e-4711-ae0e-f48fb1d5e8f4"],
+Cell[13424, 413, 344, 8, 34, "Output",ExpressionUUID->"8dbd9013-380f-4c11-9051-f12e7851696d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13805, 426, 791, 17, 73, "Input",ExpressionUUID->"1607d279-7b50-449a-a6bd-2aee6356c13e"],
+Cell[14599, 445, 2108, 52, 241, "Output",ExpressionUUID->"121d5060-e93f-4809-9961-6a2341c998e6"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[16756, 503, 345, 7, 92, "Subsection",ExpressionUUID->"6555f163-4d90-4c72-bcfa-5423c5df8897"],
+Cell[17104, 512, 621, 11, 104, "Text",ExpressionUUID->"9f554c83-71c1-4c6d-8a7a-ccbcd2d817bd"],
+Cell[17728, 525, 156, 3, 30, "Input",ExpressionUUID->"430cf0a0-7504-4bf9-9b1f-4d27f4b8d658"]
+}, Closed]]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
