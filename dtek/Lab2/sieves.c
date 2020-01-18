@@ -21,20 +21,20 @@ void print_number(int z){
 }
 
 void print_sieves(int n){
-  int primes[n + 2];
+  int primes[n];
   //fill the list with "true" on every position
   //using index 2->n
   for(int i = 2; i <= n; i++){
     primes[i] = 1;
   }
-  for(int i = 2; i <= sqrt(n); i++){
+  for(int i = 2; i <= (int)sqrt(n); i++){
     if(primes[i]){
       for(int j = i*i; j <= n; j += i){
         primes[j] = 0;
       }
     }
   }
-  for(int i = 2; i < n + 2; i++){
+  for(int i = 2; i < n + 1; i++){
     if(primes[i]){
       print_number(i);
     }
