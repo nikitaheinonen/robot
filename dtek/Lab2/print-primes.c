@@ -15,7 +15,7 @@
 int side_effect = 0;
 
 void print_number(int z){
-  if(side_effect > 5){
+  if(side_effect > COLUMNS){
     printf("\n");
     side_effect = 0;
   }
