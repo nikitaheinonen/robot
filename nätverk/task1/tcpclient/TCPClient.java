@@ -35,7 +35,7 @@ public class TCPClient {
     //helpmethod to avoid code duplication
     private static String getRespose(byte[] b, Socket socket) throws IOException{
       int len = socket.getInputStream().read(b);//put stream from server in serverbuffer
-      String decodedMessage = new String(b, StandardCharsets.UTF_8);//decode message form bytes
+      String decodedMessage = new String(b, 0, len, StandardCharsets.UTF_8);//decode message form bytes
       socket.close();
       return decodedMessage;
     }

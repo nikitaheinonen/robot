@@ -36,7 +36,7 @@ import tcpclient.TCPClient;
             }else{
               serverOutput = TCPClient.askServer(hostname, port);
             }
-            System.out.printf("%s:%d says:\n%s\n", hostname, port, serverOutput);
+            System.out.printf("%s:%d says:\n%s", hostname, port, serverOutput);
         } catch(IOException ex) {
             System.err.println(ex);
         }
