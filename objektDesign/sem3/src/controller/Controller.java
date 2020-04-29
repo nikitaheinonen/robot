@@ -15,7 +15,6 @@ import util.Amount;
 public class Controller {
     private AccountingSystem accountingSystem;
     private InventorySystem inventorySystem;
-    private DiscountCatalog discountCatalog; //not used
     private ItemCatalog itemCatalog;
     private Printer printer;
     private CashRegister cashRegister;
@@ -31,7 +30,6 @@ public class Controller {
     public Controller(SystemCreator systemCreator, CatalogCreator catalogCreator, Printer printer){
         this.accountingSystem = systemCreator.getAccountingSystem();
         this.inventorySystem = systemCreator.getInventorySystem();
-        this.discountCatalog = catalogCreator.getDiscountCatalog();
         this.itemCatalog = catalogCreator.getItemCatalog();
         this.printer = printer;
         this.cashRegister = new CashRegister();
