@@ -53,9 +53,9 @@ public class Controller {
 			System.out.println("running total with Vat: " + this.sale.getRunningTotal().add(this.sale.getTotalVat()));
 		}catch(DisconnectedFromDataBaseException d){
 			System.out.println("***ERRORLOG FOR DEVS***  UNABLE TO CONNECT TO DATABASE\n" + d);
-		}catch(FailedToFindItemIdException f){
-			System.out.println("***ERRORLOG FOR DEVS***  UNABLE TO FIND ITEMID: " + f.getFailId() + " IN DATABASE\n" + f);
-			throw new FailedToFindItemIdException(itemIdentifier);
+		//}catch(FailedToFindItemIdException f){
+			//System.out.println("***ERRORLOG FOR DEVS***  UNABLE TO FIND ITEMID: " + f.getFailId() + " IN DATABASE\n" + f);
+			//throw new FailedToFindItemIdException(itemIdentifier);
 		}
 	}
 	/*
