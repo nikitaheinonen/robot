@@ -4,6 +4,7 @@
 package model;
 
 import integration.ItemDTO;
+
 import java.util.*;
 /**
  * @author Nikita
@@ -12,7 +13,11 @@ import java.util.*;
 public class Receipt {
 	private String receipt;
 	private Sale sale;
+	private Amount obsRev;
 	
+	/*
+	 * @param sale Instance of sale to be used
+	 */
 	public Receipt(Sale sale){
 		this.sale = sale;
 	}
@@ -22,6 +27,16 @@ public class Receipt {
 			this.receipt += (i.getName() + " ** " + i.getQuantity() + "st " + i.getPrice() + "kr/st.\n");
 		}
 	}
+	
+	
+	/*
+	 * @return return obsrev
+	 */
+	public Amount getObsRev(){
+		return obsRev;
+	}
+	
+	
 	/*
 	 * Prints out all info form sale
 	 * @return receipt as a string.
@@ -33,6 +48,7 @@ public class Receipt {
 		receipt += "\n";
 		printItems();
 		receipt += "\n" + "TOTAL WITH VAT:" + sale.getRunningTotal().add(sale.getTotalVat()) + "kr.\n";
+		obsRev = sale.getRunningTotal().add(sale.getTotalVat());
 		return receipt;
 	}
 	

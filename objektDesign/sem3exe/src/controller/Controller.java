@@ -4,9 +4,7 @@
 package controller;
 
 import integration.*;
-import model.Sale;
-import model.CashRegister;
-import model.Amount;
+import model.*;
 
 /**
  * @author Nikita
@@ -19,18 +17,20 @@ public class Controller {
 	private ExternalAccountingSystem eas;
 	private CashRegister cashRegister;
 	private InventorySystem inventorySystem;
+	private RevenueObserver obs;
 	
 	/*
 	 * Create controller
 	 * @param sysCre the systemController that creates external systems
 	 * @param print the printer that prints out receipt
 	 */
-	public Controller(SystemCreator sysCre, Printer print){
+	public Controller(SystemCreator sysCre, Printer print, RevenueObserver obs){
 		this.systemCreator = sysCre;
 		this.printer = print;
 		this.eas = this.systemCreator.getEAS();
 		this.inventorySystem = this.systemCreator.iS();
 		cashRegister = new CashRegister();
+		this.obs = obs;
 		
 	}
 	/*
@@ -38,18 +38,25 @@ public class Controller {
 	 */
 	public void startSale(){
 		this.sale = new Sale();
+		sale.addObserver(obs);
+		
 	}
 	/*
 	 * Scans an item
 	 * @param itemIdentifier of the item scanned
 	 */
-	public void scanItem(String itemIdentifier){
-		ItemDTO item = inventorySystem.findItem(itemIdentifier);
-		this.sale.updateSale(item);
-		System.out.println("Item scanned: " + item.getName() + " | price: " + item.getPrice() + " kr.");
-		System.out.println("running total with Vat: " + this.sale.getRunningTotal().add(this.sale.getTotalVat()));
-		
-		
+	public void scanItem(String itemIdentifier) throws FailedToFindItemIdException{
+		try{
+			ItemDTO item = inventorySystem.findItem(itemIdentifier);
+			this.sale.updateSale(item);
+			System.out.println("Item scanned: " + item.getName() + " | price: " + item.getPrice() + " kr.");
+			System.out.println("running total with Vat: " + this.sale.getRunningTotal().add(this.sale.getTotalVat()));
+		}catch(DisconnectedFromDataBaseException d){
+			System.out.println("***ERRORLOG FOR DEVS***  UNABLE TO CONNECT TO DATABASE\n" + d);
+		}catch(FailedToFindItemIdException f){
+			System.out.println("***ERRORLOG FOR DEVS***  UNABLE TO FIND ITEMID: " + f.getFailId() + " IN DATABASE\n" + f);
+			throw new FailedToFindItemIdException(itemIdentifier);
+		}
 	}
 	/*
 	 * End the sale, update systems and print price

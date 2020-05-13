@@ -21,6 +21,8 @@ public class Sale {
 	private Amount vat;
 	private Amount runningTotalWithVat;
 	private boolean flag = true;
+	private RevenueObserver observer;
+	
 	
 	/*
 	 * Creates a new instance of sale with a list and current time
@@ -45,6 +47,12 @@ public class Sale {
 		this.total = total.add(updatedQ.getPrice());
 		this.vat = vat.add(updatedQ.getVat());
 		return this;
+	}
+	/*
+	 * @param obs adds an observer
+	 */
+	public void addObserver(RevenueObserver obs){
+		this.observer = obs;
 	}
 	
 	private ItemDTO setQuantityInSale(ItemDTO item){
@@ -75,6 +83,7 @@ public class Sale {
 	public void printReceipt(Printer printer) {
 		Receipt receipt = new Receipt(this); 
 		printer.print(receipt);
+		observer.updateRevenue(receipt.getObsRev());
 	}
 	
 	private LocalTime setTime(){
