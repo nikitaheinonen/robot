@@ -15,7 +15,6 @@ public class FailedToFindItemIdException extends Exception {
 	 * @param fail the item id not found in database
 	 */
 	public FailedToFindItemIdException(String fail){
-		super("\nPUBLIC");
 		this.failedId = fail;
 		
 	}

@@ -48,7 +48,7 @@ public class WrongItemIdTest {
 		String existingItemId = "43";
 		try{
 			invSys.findItem(existingItemId);
-			assertTrue("Existing item was found", invSys.ost.getIdentifier().equals(existingItemId));
+			assertTrue("Existing item was not found", invSys.ost.getIdentifier().equals("43"));
 		}catch(FailedToFindItemIdException e){
 			fail("Did not find existing item");
 		}

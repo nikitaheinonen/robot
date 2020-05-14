@@ -51,12 +51,7 @@ public class Controller {
 			this.sale.updateSale(item);
 			System.out.println("Item scanned: " + item.getName() + " | price: " + item.getPrice() + " kr.");
 			System.out.println("running total with Vat: " + this.sale.getRunningTotal().add(this.sale.getTotalVat()));
-		}catch(DisconnectedFromDataBaseException d){
-			System.out.println("***ERRORLOG FOR DEVS***  UNABLE TO CONNECT TO DATABASE\n" + d);
-		//}catch(FailedToFindItemIdException f){
-			//System.out.println("***ERRORLOG FOR DEVS***  UNABLE TO FIND ITEMID: " + f.getFailId() + " IN DATABASE\n" + f);
-			//throw new FailedToFindItemIdException(itemIdentifier);
-		}
+		}catch(DisconnectedFromDataBaseException d){}
 	}
 	/*
 	 * End the sale, update systems and print price
