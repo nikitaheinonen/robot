@@ -51,7 +51,9 @@ public class Controller {
 			this.sale.updateSale(item);
 			System.out.println("Item scanned: " + item.getName() + " | price: " + item.getPrice() + " kr.");
 			System.out.println("running total with Vat: " + this.sale.getRunningTotal().add(this.sale.getTotalVat()));
-		}catch(DisconnectedFromDataBaseException d){}
+		}catch(DisconnectedFromDataBaseException d){
+			System.out.println("**Public** Unable to fetch this item from database, try again later!");
+		}
 	}
 	/*
 	 * End the sale, update systems and print price

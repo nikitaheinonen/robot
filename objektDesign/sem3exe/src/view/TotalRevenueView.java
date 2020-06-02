@@ -18,7 +18,7 @@ public class TotalRevenueView implements RevenueObserver{
 	 */
 	@Override
 	public void updateRevenue(Amount rev){
-		this.totalAmount = rev.getAmount();
+		this.totalAmount += rev.getAmount();
 		System.out.println("**TOTALREVENUE: " + rev.getAmount());
 	}
 

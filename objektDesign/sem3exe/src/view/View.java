@@ -29,7 +29,7 @@ public class View {
 		System.out.println("Cashier enters some items with the itemIdentifier code");
 		System.out.println("-----------------------------");
 		try{
-			controller.scanItem("22");
+			controller.scanItem("999");
 			System.out.println("-----------------------------");
 		}catch(FailedToFindItemIdException e){
 			System.out.println("This itemId: " + e.getFailId() + " - does not exist in this store! "
