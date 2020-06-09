@@ -14,9 +14,12 @@ public class Printer {
 	/*
 	 * Prints receipt
 	 * @param recepit the recepit to be printed
+	 * @return String the receipt
 	 */
-	public void print(Receipt recepit){
-		System.out.println(recepit.printReceipt());
+	public String print(Receipt recepit){
+		String s;
+		s = recepit.printReceipt();
+		return s;
 	}
 	
 	

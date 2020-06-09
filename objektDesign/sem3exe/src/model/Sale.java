@@ -79,11 +79,14 @@ public class Sale {
 	 * Creates receipt and prints it
 	 * 
 	 * @param printer. Printer that prints receipt.
+	 * @return String the receipt 
 	 */
-	public void printReceipt(Printer printer) {
+	public String printReceipt(Printer printer) {
+		String s;
 		Receipt receipt = new Receipt(this); 
-		printer.print(receipt);
+		s = printer.print(receipt);
 		observer.updateRevenue(receipt.getObsRev());
+		return s;
 	}
 	
 	private LocalTime setTime(){

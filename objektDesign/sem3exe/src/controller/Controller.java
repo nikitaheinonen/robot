@@ -44,36 +44,59 @@ public class Controller {
 	/*
 	 * Scans an item
 	 * @param itemIdentifier of the item scanned
+	 * @return a String containing info about current item to be displayed
 	 */
-	public void scanItem(String itemIdentifier) throws FailedToFindItemIdException{
+	public String scanItem(String itemIdentifier) throws FailedToFindItemIdException{
 		try{
+			String out;
 			ItemDTO item = inventorySystem.findItem(itemIdentifier);
 			this.sale.updateSale(item);
-			System.out.println("Item scanned: " + item.getName() + " | price: " + item.getPrice() + " kr.");
-			System.out.println("running total with Vat: " + this.sale.getRunningTotal().add(this.sale.getTotalVat()));
+			out = "Item scanned: " + item.getName() + " | price: " + item.getPrice() + " kr.";
+			out += "\nRunning total with Vat: " + this.sale.getRunningTotal().add(this.sale.getTotalVat());
+			return out;
+			
 		}catch(DisconnectedFromDataBaseException d){
-			System.out.println("**Public** Unable to fetch this item from database, try again later!");
+			String fail;
+			fail = "**Public** Unable to fetch this item from database, try again later!";
+			return fail;
 		}
 	}
 	/*
 	 * End the sale, update systems and print price
+	 * @return integer with value of running total
 	 */
-	public void endSale(){
-		System.out.println("Total price with VAT: " + this.sale.getRunningTotal().add(this.sale.getTotalVat()));
+	public int endSale(){
+		int runningTot;
+		runningTot = this.sale.getRunningTotal().add(this.sale.getTotalVat()).getAmount();
+		return runningTot;
+		
 	}
 	/*
 	 * Makes a payment
 	 * @param amount the amount paid
+	 * @return integer pay with the amount of change the customer should receive
 	 */
-	public void payment(int amount){
+	public int payment(int amount){
+		int pay;
 		Amount finalPayment = new Amount(amount);
 		Amount change = finalPayment.sub(this.sale.getRunningTotal().add(this.sale.getTotalVat()));
 		cashRegister.addPayment(change);
-		System.out.println("CHANGE: " + change.getAmount() + "kr.");
-		this.sale.printReceipt(printer);
-		System.out.println("CHANGE: " + change.getAmount() + "kr.");
+		pay = change.getAmount();
+		//this.sale.printReceipt(printer);
+		return pay;
 		
 	}
+	/*
+	 * Gets the receipt information
+	 * @return String the receipt in string format.
+	 */
+	public String printRec(){
+		String rec;
+		rec = this.sale.printReceipt(printer);
+		return rec;
+	}
+	
+	
 	
 	
 
